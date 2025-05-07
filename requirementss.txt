@@ -1,4 +1,1 @@
-streamlit
-mediapipe
-pillow
-numpy
+
