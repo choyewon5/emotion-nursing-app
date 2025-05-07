@@ -1,5 +1,4 @@
 import streamlit as st
-import cv2
 import numpy as np
 import mediapipe as mp
 from PIL import Image
@@ -13,12 +12,12 @@ if uploaded_file is not None:
     st.image(image, caption='업로드한 사진', use_column_width=True)
     
     img_array = np.array(image)
-    img_rgb = cv2.cvtColor(img_array, cv2.COLOR_RGB2BGR)
     
     mp_face = mp.solutions.face_detection
     face_detection = mp_face.FaceDetection(model_selection=1, min_detection_confidence=0.5)
     
-    results = face_detection.process(img_rgb)
+    # Mediapipe는 RGB를 입력으로 받음
+    results = face_detection.process(img_array)
     
     if results.detections:
         st.success("얼굴이 감지되었습니다. 표정 분석 중...")
