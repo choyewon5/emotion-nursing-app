@@ -2,3 +2,4 @@ streamlit
 mediapipe
 pillow
 numpy
+opencv-python-headless
